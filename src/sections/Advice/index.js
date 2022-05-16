@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import AdviceSlip from "./components/AdviceSlip";
+import FavoriteSlipsList from "./components/FavouriteSlipsList";
 
 const AdviceSection = () => {
   const [advice, setAdvice] = useState("");
@@ -17,20 +19,12 @@ const AdviceSection = () => {
   return (
     <section>
       <h2>Advice Section</h2>
-      <section className="advice-slip">
-        <h3>Some Advice</h3>
-        <p>{advice}</p>
-        <button onClick={() => getNewAdvice()}>Get More Advice</button>
-        <button onClick={() => saveFavoriteAdvice()}>Save to Favourties</button>
-      </section>
-      <section className="favourtite-slips-list">
-        <h3>Favourite Advice Slips</h3>
-        <ul>
-          {adviceList.map((advice, index) => (
-            <li key={index}>{advice}</li>
-          ))}
-        </ul>
-      </section>
+      <AdviceSlip
+        advice={advice}
+        getNewAdvice={getNewAdvice}
+        saveFavoriteAdvice={saveFavoriteAdvice}
+      />
+      <FavoriteSlipsList adviceList={adviceList} />
     </section>
   );
 };
