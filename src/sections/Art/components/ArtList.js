@@ -2,19 +2,19 @@ import { useEffect, useState } from "react";
 import ArtListItem from "./ArtListItem";
 
 const ArtList = () => {
-  const [artworks, setArtworks] = useState([]);
+  const [artworkData, setArtworkData] = useState([]);
 
   useEffect(() => {
     fetch("https://api.artic.edu/api/v1/artworks")
       .then((res) => res.json())
-      .then((data) => {
-        setArtworks(data.data);
+      .then((artworks) => {
+        setArtworkData(artworks.data);
       });
   }, []);
 
   return (
     <ul className="art-list">
-      {artworks.map((artwork, index) => (
+      {artworkData.map((artwork, index) => (
         <ArtListItem key={index} artwork={artwork} />
       ))}
     </ul>
